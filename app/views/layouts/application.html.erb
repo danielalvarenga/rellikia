@@ -1,14 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Rellikia</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <head>
+      <%= render 'layouts/head' %>
+    </head>
+    <body>
 
-<%= yield %>
+        <!-- content wrapper to define fullpage or container -->
+        <!-- (recomended: dont change the id value) -->
+        <section id="wrapper" class="container">
 
-</body>
+          <!-- define side left theme -->
+          <%= render 'layouts/sidebar' %>
+
+          <!-- define content theme, use data-swipe="true" to enable gesture event -->
+          <!-- (recomended: dont change the id value) -->
+          <section id="content" class="content content-lg">
+
+            <%= render 'layouts/topbar' %>
+
+            <!-- define content row -->
+            <div class="content-spliter">
+              <!-- define your awesome apps here -->
+              <!-- (recomended: dont change the id value) -->
+              <section id="content-main" class="content-main">
+
+                <!-- your app content -->
+                <div class="content-app fixed-header">
+
+                  <%= render 'layouts/nav' %>
+
+                  <!-- app body -->
+                  <div class="app-body">
+
+                    <!-- Errors, notices and alerts -->
+                    <%= render 'layouts/messages' %>
+
+                    <!-- Main Content -->
+                    <%= yield %>
+
+                  </div>
+                  <!-- /app body -->
+                </div>
+                <!-- /content app -->
+
+              </section>
+              <!-- /content main -->
+
+
+              <%= render 'layouts/form' %>
+            </div><!-- /content spliter -->
+
+          </section><!-- /content -->
+        </section><!-- /wrapper -->
+
+        <%= render 'layouts/footer' %>
+    </body>
 </html>
