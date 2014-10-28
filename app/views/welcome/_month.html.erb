@@ -1,0 +1,72 @@
+<% meses = {1 => "Janeiro", 2 => "Fevereiro", 3 => "Março", 4 => "Abril", 5 => "Maio", 6 => "Junho",
+            7 => "Julho", 8 => "Agosto", 9 => "Setembro", 10 => "Outubro", 11 => "Novembro", 12 => "Dezembro"} %>
+
+<div class="col-xs-1 <%= if month_number == 1 then 'month-first' end %>">
+  <div class="box month">
+
+    <div class="month-header">
+      <span class="month-name"><h5><%= meses[month_number] %></h5></span>
+      <span class="money-value"><h5>$ 1.700,00</h5></span>
+    </div>
+    <div class="month-content fancy-scrollbar">
+
+      <div id="panel1" class="panel category panel-default magic-element isotope-item" style="transform: translate3d(0px, 0px, 0px);">
+        <div class="panel-heading category-header credit">
+          <div class="panel-icon"><i class="icon ion-navicon-round"></i></div>
+          <div class="panel-actions">
+            <a role="button" data-expand="#panel1" title="expand" class="btn btn-sm btn-icon">
+              <%= fa_icon "expand" %>
+            </a>
+            <a role="button" data-collapse="#panel1" title="collapse" class="btn btn-sm btn-icon">
+              <%= fa_icon "caret-down" %>
+            </a>
+          </div><!-- /panel-actions -->
+          <h3 class="panel-title">Receita</h3>
+        </div><!-- /panel-heading -->
+        <div class="panel-body category-body" style="display: block;">
+          <% for z in (1..2) %>
+              <div id="panel<%= z %>1" class="panel category panel-default magic-element isotope-item" style="transform: translate3d(0px, 0px, 0px);">
+                <%= render partial: 'welcome/credit_category', locals: {z: z, name: 'Categoria'} %>
+                <div class="panel-body category-body" style="display: block;">
+                  <% for j in (1..2) %>
+                      <%= render partial: 'welcome/entry', locals: {j: j} %>
+                  <% end %>
+                </div><!-- /panel-body -->
+              </div>
+          <% end %>
+        </div><!-- /panel-body -->
+
+      </div>
+
+      <div id="panel3" class="panel category panel-default magic-element isotope-item" style="transform: translate3d(0px, 0px, 0px);">
+        <div class="panel-heading category-header debit">
+          <div class="panel-icon"><i class="icon ion-navicon-round"></i></div>
+          <div class="panel-actions">
+            <a role="button" data-expand="#panel3" title="expand" class="btn btn-sm btn-icon">
+              <%= fa_icon "expand" %>
+            </a>
+            <a role="button" data-collapse="#panel3" title="collapse" class="btn btn-sm btn-icon">
+              <%= fa_icon "caret-down" %>
+            </a>
+          </div><!-- /panel-actions -->
+          <h3 class="panel-title">Despesas</h3>
+        </div><!-- /panel-heading -->
+        <div class="panel-body category-body" style="display: block;">
+
+          <% for z in (1..2) %>
+              <div id="panel<%= z %>2" class="panel category panel-default magic-element isotope-item" style="transform: translate3d(0px, 0px, 0px);">
+                <%= render partial: 'welcome/debit_category', locals: {z: z, name: 'Categoria'} %>
+                <div class="panel-body category-body" style="display: block;">
+                  <% for j in (1..2) %>
+                      <%= render partial: 'welcome/entry', locals: {j: j} %>
+                  <% end %>
+                </div><!-- /panel-body -->
+              </div>
+          <% end %>
+        </div><!-- /panel-body -->
+
+      </div>
+
+    </div>
+  </div>
+</div>

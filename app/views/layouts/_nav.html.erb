@@ -27,15 +27,14 @@
                           </div>
                           <div class="pull-left">
                             <a href="#" class="btn btn-success btn-extend be-left credit">
-                              Receita
-                              <i class="icon ion-plus-round credit"></i>
-                              <span class="glyphicon glyphicon-usd credit"></span>
+                              <span class="op-currency">
+                                <%= fa_icon "plus", text: fa_icon("usd 1.5x") %>
+                              </span>Receita
                             </a>
                             <a href="#" class="btn btn-danger btn-extend be-left debit">
-                              Despesa
-                              <i class="icon ion-minus-round debit"></i>
-                              <span class="glyphicon glyphicon-usd debit"></span>
-
+                                <span class="op-currency">
+                                  <%= fa_icon "minus", text: fa_icon("usd") %>
+                                </span>Despesa
                             </a>
                           </div>
                         </div>

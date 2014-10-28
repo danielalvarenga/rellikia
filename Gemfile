@@ -40,6 +40,8 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 
+gem 'font-awesome-rails'
+
 group :development do
   # Exibe uma tela de erro mais detalhada
   gem 'better_errors'

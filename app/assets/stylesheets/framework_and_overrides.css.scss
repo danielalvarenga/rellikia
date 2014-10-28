@@ -1,4 +1,59 @@
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
+.content-module {
+  .module-body {
+    background-color: #fff;
+  }
+}
+
+.content-main.content-main-md {
+  -ms-transform: translateX(0px) !important;
+  -webkit-transform: translateX(0px) !important;
+  -moz-transform: translateX(0px) !important;
+  transform: translateX(0px) !important;
+  right: 0px !important;
+  padding-right: 300px;
+}
+
+span.op-currency {
+
+  .fa-plus, .fa-minus {
+    font-size: 0.7em;
+  }
+
+}
+
+.btn.btn-extend.btn-danger > span.op-currency {
+  background-color: #c0392b;
+}
+
+.btn.btn-extend.btn-success > span.op-currency {
+  background-color: #27ae60;
+}
+
+.btn.btn-extend.be-left > span.op-currency {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  right: auto;
+  left: 0;
+}
+
+.btn.btn-extend > span.op-currency {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 6px 0;
+  width: 32px;
+  text-align: center;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+}
