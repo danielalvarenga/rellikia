@@ -3,6 +3,20 @@
 @import "bootstrap";
 @import "font-awesome";
 
+a {
+  color: #2a6496;
+  cursor: pointer;
+  text-decoration: none;
+
+  :hover {
+    color: #428bca;
+  }
+}
+
+a.white {
+  color: #ffffff;
+}
+
 .content-module {
   .module-body {
     background-color: #fff;
@@ -22,6 +36,7 @@ span.op-currency {
 
   .fa-plus, .fa-minus {
     font-size: 0.7em;
+    margin-right: -4px;
   }
 
 }
@@ -56,4 +71,10 @@ span.op-currency {
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
   background-clip: padding-box;
+}
+
+ul.dropdown-menu.year-box {
+  right: 0;
+  left: auto;
+  min-width: 95px;
 }
