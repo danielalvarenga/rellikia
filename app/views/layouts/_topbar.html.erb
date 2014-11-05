@@ -1,0 +1,55 @@
+<!-- define your content header here -->
+<header class="content-header">
+
+  <div class="header-actions pull-left">
+    <!-- side header -->
+    <div class="side-header">
+      <!-- place your brand (recomended: dont change the id value) -->
+      <!-- (recomended: dont change the id value) -->
+      <h1 id="brand" class="brand">
+        <%= link_to root_path, class: "brand", id: "brand" do %>
+          <!-- <i class="icon ion-waterdrop"></i> -->
+          <%= image_tag 'logo/brand.png', alt: "Brand" %><!-- 32px image logo -->
+          Rellikia
+        <% end %>
+      </h1><!-- /brand -->
+
+      <!-- form search, remove class hide if you not place your brand -->
+      <!-- (recomended: dont change the id value) -->
+      <form id="smart-search" class="side-form hide" role="form">
+        <input type="text" class="form-control" data-target=".side-wrapper" placeholder="Smart Finder">
+      </form><!-- /side wrapper -->
+    </div><!-- /side header -->
+  </div>
+
+
+  <!-- header actions -->
+  <div class="header-actions pull-right">
+    <!-- (recomended: dont change the id value) -->
+    <div class="btn-group">
+        <%= render 'layouts/topbar/notifications' %>
+    </div><!-- /btn-group notifications -->
+
+    <!-- (recomended: dont change the id value) -->
+    <div class="btn-group">
+        <%= render 'layouts/topbar/messages' %>
+    </div><!-- /btn-group new messages -->
+
+    <!-- (recomended: dont change the id value) -->
+    <div class="btn-group">
+      <%= render 'layouts/topbar/user_resume' %>
+    </div><!-- /btn-group setting -->
+
+  </div><!-- /header actions -->
+
+  <!-- header actions -->
+  <div class="header-actions pull-left">
+    <!-- (recomended: dont change the id value) -->
+    <button id="toggle-content" class="btn btn-icon" type="button"><i class="icon ion-navicon-round"></i></button>
+    <!-- (recomended: dont change the id value) -->
+    <button id="toggle-search" class="btn btn-icon" type="button"><i class="icon ion-search"></i></button>
+  </div><!-- /header actions -->
+
+  <!-- your Awesome App title -->
+  <h1 class="content-title"></h1>
+</header>
