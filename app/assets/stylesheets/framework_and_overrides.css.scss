@@ -17,6 +17,13 @@ a.white {
   color: #ffffff;
 }
 
+a.op-currency {
+  color: #ffffff;
+  :hover {
+    color: #ffffff;
+  }
+}
+
 .content-module {
   .module-body {
     background-color: #fff;
@@ -77,4 +84,17 @@ ul.dropdown-menu.year-box {
   right: 0;
   left: auto;
   min-width: 95px;
+}
+.child-category {
+  .money-value {
+    line-height: 1.5;
+  }
+}
+
+.entry {
+  h6 {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    diplay: inline;
+  }
 }
