@@ -1,0 +1,34 @@
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
+
+<!-- Rails Layout -->
+<title><%= content_for?(:title) ? yield(:title) : "Rellikia" %></title>
+<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rellikia" %>">
+<%= stylesheet_link_tag 'application', media: 'all' %>
+<%= javascript_include_tag 'application' %>
+<%= csrf_meta_tags %>
+
+<!-- fav and touch icons -->
+<%= favicon_link_tag 'app/ico/apple-touch-icon-144-precomposed.png', sizes: '144x144', rel: 'apple-touch-icon-precomposed' %>
+<%= favicon_link_tag 'app/ico/apple-touch-icon-114-precomposed.png', sizes: '114x114', rel: 'apple-touch-icon-precomposed' %>
+<%= favicon_link_tag 'app/ico/apple-touch-icon-72-precomposed.png', sizes: '72x72', rel: 'apple-touch-icon-precomposed' %>
+<%= favicon_link_tag 'app/ico/apple-touch-icon-57-precomposed.png', rel: 'apple-touch-icon-precomposed' %>
+<%= favicon_link_tag 'app/ico/favico.png', rel: 'shortcut icon' %>
+<%= favicon_link_tag 'app/ico/favico.ico', rel: 'shortcut icon' %>
+
+<!-- theme fonts -->
+<!--<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>-->
+
+<!-- theme dependencies stylesheets -->
+<%= stylesheet_link_tag 'app/css/dependencies' %>
+
+<!-- theme app main.css (this import of all custom css, you can use requirejs for optimizeCss or grunt to optimize them all) -->
+<%= stylesheet_link_tag 'app/css/syrena-admin' %>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
