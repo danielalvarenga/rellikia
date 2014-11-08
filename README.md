@@ -1,3 +1,5 @@
+[ ![Codeship Status for danielalvarenga/rellikia](https://codeship.io/projects/81bc9e40-492b-0132-68ba-1e4f86f858d0/status)](https://codeship.io/projects/46077)
+
 == README
 
 This README would normally document whatever steps are necessary to get the
