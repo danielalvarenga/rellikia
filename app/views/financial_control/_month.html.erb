@@ -1,0 +1,23 @@
+<% meses = {1 => "Janeiro", 2 => "Fevereiro", 3 => "Março", 4 => "Abril", 5 => "Maio", 6 => "Junho",
+            7 => "Julho", 8 => "Agosto", 9 => "Setembro", 10 => "Outubro", 11 => "Novembro", 12 => "Dezembro"} %>
+
+<div class="col-xs-1 <%= if month_number == 1 then 'month-first' end %>">
+  <div class="box month">
+
+    <div class="month-header">
+      <span class="month-name"><h5><%= meses[month_number] %></h5></span>
+      <span class="money-value"><h5>$ 1.700,00</h5></span>
+    </div>
+    <div class="month-content fancy-scrollbar">
+
+      <div id="panel1" class="panel category panel-default magic-element isotope-item" style="transform: translate3d(0px, 0px, 0px);">
+        <%= render partial: 'financial_control/credit_root_category' %>
+      </div>
+
+      <div id="panel3" class="panel category panel-default magic-element isotope-item" style="transform: translate3d(0px, 0px, 0px);">
+        <%= render partial: 'financial_control/debit_root_category' %>
+      </div>
+
+    </div>
+  </div>
+</div>

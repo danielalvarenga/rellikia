@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: entries
+#
+#  id          :integer          not null, primary key
+#  positive    :boolean
+#  title       :string(255)
+#  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  positive: false
+  title: MyString
+  description: MyText
+
+two:
+  positive: false
+  title: MyString
+  description: MyText

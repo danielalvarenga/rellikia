@@ -45,11 +45,10 @@ gem 'font-awesome-rails'
 group :development do
   # Exibe uma tela de erro mais detalhada
   gem 'better_errors'
-
   # suprime as mensagens de distração no log
   gem 'quiet_assets'
-
   # gera arquivos para um layout de aplicação
   gem 'rails_layout'
+  gem 'annotate', '~> 2.6.5'
+  gem 'pry-rails'
 end
-

@@ -1,0 +1,13 @@
+<div class="months-canvas fancy-scrollbar">
+	<div class="months-area">
+		<div class="row rowgrid">
+			<div class="col-xs-12">
+				<div class="row rowgrid">
+					<% for i in (1..12) %>
+                        <%= render partial: 'financial_control/month', locals: {month_number: i} %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
