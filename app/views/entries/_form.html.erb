@@ -45,6 +45,17 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.collection_select :category_id, @categories, :id, :name, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tags %><br>
+    <%= f.collection_select :tag_ids, @tags, :id, :name, {}, {multiple: true} %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

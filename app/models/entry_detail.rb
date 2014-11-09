@@ -23,4 +23,10 @@
 
 class EntryDetail < ActiveRecord::Base
   belongs_to :entry
+
+  scope :revenues, -> { where('`entries`.`positive` = 1') }
+  scope :expenses, -> { where('`entries`.`positive` = 0') }
+  scope :include_all, -> { joins(entry: [:category, :tags]).group("`entries`.`id`") }
+  scope :in_category, -> (category) { where("`categories`.`id` = #{category.id}") }
+  scope :in_month, -> (month_number) { where("`entry_details`.`month` = #{month_number}") }
 end

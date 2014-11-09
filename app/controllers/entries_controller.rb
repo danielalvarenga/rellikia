@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_associations, only: [:new, :edit]
 
   # GET /entries
   # GET /entries.json
@@ -68,9 +69,15 @@ class EntriesController < ApplicationController
       @entry = Entry.find(params[:id])
     end
 
+    def set_associations
+      @categories = Category.order(:name)
+      @tags = Tag.order(:name)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params.require(:entry).permit(:positive, :title, :description,
-        :entry_details_attributes => [:amount, :amount_paid, :paid, :day, :month, :year, :day_paid, :month_paid, :year_paid, :entry_id])
+      params.require(:entry).permit(:positive, :title, :description, :category_id, tag_ids: [],
+        :entry_details_attributes => [:amount, :amount_paid, :paid, :day, :month, :year,
+                                      :day_paid, :month_paid, :year_paid, :entry_id])
     end
 end
