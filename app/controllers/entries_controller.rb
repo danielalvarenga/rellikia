@@ -77,7 +77,7 @@ class EntriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
       params.require(:entry).permit(:positive, :title, :description, :category_id, tag_ids: [],
-        :entry_details_attributes => [:amount, :amount_paid, :paid, :day, :month, :year,
+        :entry_details_attributes => [:id, :amount, :amount_paid, :paid, :day, :month, :year,
                                       :day_paid, :month_paid, :year_paid, :entry_id])
     end
 end
