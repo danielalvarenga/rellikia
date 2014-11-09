@@ -8,6 +8,7 @@
 #  description :text
 #  created_at  :datetime
 #  updated_at  :datetime
+#  category_id :integer
 #
 
 require 'test_helper'

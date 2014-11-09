@@ -3,8 +3,11 @@
 		<div class="row rowgrid">
 			<div class="col-xs-12">
 				<div class="row rowgrid">
-					<% for i in (1..12) %>
-                        <%= render partial: 'financial_control/month', locals: {month_number: i} %>
+					<% months.each do |number, name| %>
+                        <%= render partial: 'financial_control/month',
+                                   locals: {month: {number: number, name: name},
+                                            entry_details: @entry_details.in_month(number),
+                                            categories: @categories.in_month(number)} %>
 					<% end %>
 				</div>
 			</div>
