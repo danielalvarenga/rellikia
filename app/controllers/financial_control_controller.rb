@@ -19,7 +19,7 @@ class FinancialControlController < ApplicationController
   end
 
   def set_associations
-    @categories = Category.order(:name)
+    @all_categories = Category.order(:name)
     @tags = Tag.order(:name)
   end
 end

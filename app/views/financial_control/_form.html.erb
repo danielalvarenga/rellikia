@@ -44,39 +44,41 @@
         </div><!-- /input-group -->
     </div>
     <div class="form-group">
-      <%= ed.label :day %><br>
-      <%= ed.number_field :day, class: "form-control" %>
+        <div class='input-group date' id='datetimepicker-entry'>
+          <%= text_field_tag :entry, '', class: "form-control", data: {format: "DD/MM/YYYY"} %>
+          <span class="input-group-addon">
+            <span class="icon ion-ios7-calendar-outline"></span>
+          </span>
+        </div>
     </div>
-    <div class="form-group">
-      <%= ed.label :month %><br>
-      <%= ed.number_field :month, class: "form-control" %>
+    <div class="col-sm-2">
+        <div class="form-group">
+          <%= ed.label :day %><br>
+          <%= ed.number_field :day, class: "form-control" %>
+        </div>
     </div>
-    <div class="form-group">
-      <%= ed.label :year %><br>
-      <%= ed.number_field :year, class: "form-control" %>
+    <div class="col-sm-6">
+        <div class="form-group">
+          <%= ed.label :month %><br>
+          <%= ed.number_field :month, class: "form-control" %>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+          <%= ed.label :year %><br>
+          <%= ed.number_field :year, class: "form-control" %>
+        </div>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= f.label :category %><br>
-    <%= f.collection_select :category_id, @categories, :id, :name, prompt: true, class: "form-control" %>
+    <%= f.label :category, class: "control-label" %>
+    <%= f.collection_select :category_id, @all_categories, :id, :name, {prompt: true}, {class: "form-control"} %>
   </div>
 
   <div class="form-group">
     <%= f.label :tags %><br>
     <%= f.collection_select :tag_ids, @tags, :id, :name, {}, {multiple: true, class: "form-control"} %>
-  </div>
-
-  <div class="form-group">
-    <input id="tags-input1" type="text" class="tags" value="foo,bar,baz,roffle" style="display: none;">
-    <div id="tags-input1_tagsinput" class="tagsinput" style="width: auto; height: 32px;">
-      <span class="tag"><span>tag1</span><a href="#" title="Removing tag">x</a></span>
-      <span class="tag"><span>tag2</span><a href="#" title="Removing tag">x</a></span>
-      <span class="tag"><span>tag3</span><a href="#" title="Removing tag">x</a></span>
-      <div id="tags-input1_addTag">
-        <input id="tags-input1_tag" value="" data-default="add a tag" style="color: rgb(102, 102, 102); width: 73px;"></div>
-      <div class="tags_clear"></div>
-    </div>
   </div>
 
   <div class="actions">
@@ -85,11 +87,13 @@
 <% end %>
 </div>
 
-<script src="assets/jquery-icheck/jquery.icheck.min.js"></script>
+<%= javascript_include_tag 'jquery-icheck/jquery.icheck.min' %>
+<%= javascript_include_tag 'bootstrap3-datetimepicker/js/bootstrap-datetimepicker.min' %>
 
 <script type="text/javascript">
 
     $(function() {
+        'use strict';
 
         // checkbox and radio with iCheck
         // Initialize all components iCheck
@@ -159,6 +163,15 @@
         });
         // end iCheck
 
+//        // bootstrap3-datetimepicker
+//        $('#datetimepicker-entry').datetimepicker({
+//            icons : {
+//                time: 'icon ion-ios7-clock-outline',
+//                date: 'icon ion-ios7-calendar-outline',
+//                up:   'icon ion-ios7-arrow-up',
+//                down: 'icon ion-ios7-arrow-down'
+//            }
+//        });
     });
 
 </script>

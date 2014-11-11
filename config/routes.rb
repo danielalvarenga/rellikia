@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
+  get 'financial_control/index'
 
   resources :tags
 
   resources :categories
-
-  get 'financial_control/index'
 
   resources :entries
 
