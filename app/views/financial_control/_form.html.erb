@@ -1,0 +1,164 @@
+<div class="box right-sidebar">
+<%= form_for @entry, class: "form-horizontal", role: "form" do |f| %>
+  <% if @entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% @entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="input-group">
+      <div class="radio-line">
+        <%= f.radio_button :positive, "1", checked: true, class: "iCheck", data: {skin: "line", color: "green"} %>
+        <%= f.label :positive, "Receita" %>
+        <%= f.radio_button :positive, "0", class: "iCheck", data: {skin: "line", color: "red"} %>
+        <%= f.label :positive, "Despesa" %>
+      </div>
+    </div><!-- /input-group -->
+  </div><!-- /form-group -->
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <%= f.fields_for :entry_details do |ed| %>
+    <div class="form-group">
+      <%= ed.label :amount %><br>
+      <%= ed.text_field :amount, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+          <%= ed.check_box :paid, class: "iCheck", data: {skin: "line", color: "blue"} %>
+          <%= ed.label :paid %>
+        </div><!-- /input-group -->
+    </div>
+    <div class="form-group">
+      <%= ed.label :day %><br>
+      <%= ed.number_field :day, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= ed.label :month %><br>
+      <%= ed.number_field :month, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= ed.label :year %><br>
+      <%= ed.number_field :year, class: "form-control" %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :category %><br>
+    <%= f.collection_select :category_id, @categories, :id, :name, prompt: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tags %><br>
+    <%= f.collection_select :tag_ids, @tags, :id, :name, {}, {multiple: true, class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <input id="tags-input1" type="text" class="tags" value="foo,bar,baz,roffle" style="display: none;">
+    <div id="tags-input1_tagsinput" class="tagsinput" style="width: auto; height: 32px;">
+      <span class="tag"><span>tag1</span><a href="#" title="Removing tag">x</a></span>
+      <span class="tag"><span>tag2</span><a href="#" title="Removing tag">x</a></span>
+      <span class="tag"><span>tag3</span><a href="#" title="Removing tag">x</a></span>
+      <div id="tags-input1_addTag">
+        <input id="tags-input1_tag" value="" data-default="add a tag" style="color: rgb(102, 102, 102); width: 73px;"></div>
+      <div class="tags_clear"></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
+
+<script src="assets/jquery-icheck/jquery.icheck.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function() {
+
+        // checkbox and radio with iCheck
+        // Initialize all components iCheck
+        $('.iCheck').each(function(){
+            // var each element .iCheck
+            var $this = $(this),
+                    skin = $this.attr('data-skin'),
+                    color = $this.attr('data-color'),
+                    checkbox, radio, insert = '';
+
+            /**
+             * default usage skin
+             *
+             * Skins options:
+             * @data-skin minimalis
+             * @data-skin square
+             * @data-skin flat
+             * @data-skin line
+             * @data-skin polaris
+             * @data-skin futurico
+             */
+            if (skin === undefined) {
+                checkbox = 'icheckbox_minimal';
+                radio = 'iradio_minimal';
+            }
+            else{
+                checkbox = 'icheckbox_' + skin;
+                radio = 'iradio_' + skin;
+            }
+
+            /**
+             * default usage color
+             *
+             * Available colors:
+             * @data-color black
+             * @data-color red
+             * @data-color green
+             * @data-color blue
+             * @data-color aero
+             * @data-color grey
+             * @data-color orange
+             * @data-color yellow
+             * @data-color pink
+             * @data-color purple
+             */
+            if (color !== undefined) {
+                checkbox = checkbox + '-' + color;
+                radio = radio + '-' + color;
+            }
+
+            // handle iCheck skin 'line'
+            if (skin == 'line') {
+                var label = $this.next(),
+                        label_text = label.text();
+
+                insert = '<div class="icheck_line-icon"></div>' + label_text;
+                label.remove();
+            }
+
+            // initialize
+            $this.iCheck({
+                checkboxClass: checkbox,
+                radioClass: radio,
+                insert: insert,
+                increaseArea: '20%' // optional
+            });
+        });
+        // end iCheck
+
+    });
+
+</script>
