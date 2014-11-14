@@ -1,5 +1,4 @@
 class FinancialControlController < ApplicationController
-  before_action :set_associations, only: [:index]
 
   def index
     @entry_details = EntryDetail.include_all.
@@ -16,10 +15,5 @@ class FinancialControlController < ApplicationController
 
     @entry = Entry.new
     @entry.entry_details.build
-  end
-
-  def set_associations
-    @all_categories = Category.order(:name)
-    @tags = Tag.order(:name)
   end
 end
