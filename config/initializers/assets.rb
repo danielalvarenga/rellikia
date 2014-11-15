@@ -16,6 +16,7 @@ Rails.application.config.assets.precompile += %w( app/css/dependencies.css )
 Rails.application.config.assets.precompile += %w( app/css/syrena-admin.css )
 
 # Javascript
+Rails.application.config.assets.precompile += %w( jquery/jquery.js )
 Rails.application.config.assets.precompile += %w( app/js/main.js )
 Rails.application.config.assets.precompile += %w( app/js/dependencies.js )
 Rails.application.config.assets.precompile += %w( jquery-icheck/jquery.icheck.min.js )
