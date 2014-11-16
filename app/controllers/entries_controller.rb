@@ -30,10 +30,10 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        format.html { redirect_to financial_control_index_url, notice: 'Entry was successfully created.' }
         format.json { render :show, status: :created, location: @entry }
       else
-        format.html { render :new }
+        format.html { redirect_to financial_control_index_url }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
@@ -77,7 +77,6 @@ class EntriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
       params.require(:entry).permit(:positive, :title, :description, :category_id, tag_ids: [],
-        :entry_details_attributes => [:id, :amount, :amount_paid, :paid, :day, :month, :year,
-                                      :day_paid, :month_paid, :year_paid, :entry_id])
+        :entry_details_attributes => [:id, :amount, :amount_paid, :paid, :entry_date, :entry_id])
     end
 end

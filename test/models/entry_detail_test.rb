@@ -15,6 +15,8 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  paid        :boolean
+#  entry_date  :date
+#  paid_date   :date
 #
 # Indexes
 #

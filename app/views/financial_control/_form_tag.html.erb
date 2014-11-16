@@ -1,0 +1,10 @@
+<%= form_for Tag.new, class: "form-horizontal", role: "form" do |fc| %>
+    <div class="form-group">
+      <div class="input-group">
+        <%= fc.text_field :name, class: "form-control", placeholder: "Nova Tag" %>
+        <span class="input-group-btn">
+            <%= fc.submit "Adicionar", class: "btn btn-success" %>
+        </span>
+      </div>
+    </div>
+<% end %>

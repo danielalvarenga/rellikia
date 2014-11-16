@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108150707) do
+ActiveRecord::Schema.define(version: 20141116160233) do
 
   create_table "categories", force: true do |t|
     t.string   "name",       limit: 30
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20141108150707) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "paid"
+    t.date     "entry_date"
+    t.date     "paid_date"
   end
 
   add_index "entry_details", ["entry_id"], name: "index_entry_details_on_entry_id", using: :btree

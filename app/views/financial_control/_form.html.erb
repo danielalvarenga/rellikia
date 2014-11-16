@@ -71,13 +71,17 @@
 
   <div class="form-group">
     <%= f.label :category, class: "control-label" %>
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name, {prompt: true}, {class: "form-control"} %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, {prompt: "Sem Categoria"}, {class: "form-control"} %>
   </div>
+
+  <%= render 'form_category' %>
 
   <div class="form-group">
     <%= f.label :tags, class: "control-label" %>
-    <%= f.collection_select :tag_ids, Tag.order(:name), :id, :name, {}, {multiple: true, class: "form-control"} %>
+    <%= f.collection_select :tag_ids, Tag.order(:name), :id, :name, {}, {multiple: true, class: "multiselect", placeholder: "Nenhuma"} %>
   </div>
+
+  <%= render 'form_category' %>
 
   <div class="form-group">
     <%= f.label :description, class: "control-label" %>
@@ -85,13 +89,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
   </div>
 <% end %>
 </div>
-
-<%= javascript_include_tag 'jquery-icheck/jquery.icheck.min' %>
-<%= javascript_include_tag 'bootstrap3-datetimepicker/js/bootstrap-datetimepicker.min' %>
 
 <script type="text/javascript">
 
@@ -101,7 +102,7 @@
         // checkbox and radio with iCheck
         // Initialize all components iCheck
         $('.iCheck').each(function(){
-            // var each element .iCheck
+            // var each element .iCheckselect-tags
             var $this = $(this),
                     skin = $this.attr('data-skin'),
                     color = $this.attr('data-color'),
@@ -167,14 +168,17 @@
         // end iCheck
 
         // bootstrap3-datetimepicker
-//        $('#datetimepicker-entry').datetimepicker({
-//            icons : {
-//                time: 'icon ion-ios7-clock-outline',
-//                date: 'icon ion-ios7-calendar-outline',
-//                up:   'icon ion-ios7-arrow-up',
-//                down: 'icon ion-ios7-arrow-down'
-//            }
-//        });
+        $('#datetimepicker-entry').datetimepicker({
+            icons : {
+                time: 'icon ion-ios7-clock-outline',
+                date: 'icon ion-ios7-calendar-outline',
+                up:   'icon ion-ios7-arrow-up',
+                down: 'icon ion-ios7-arrow-down'
+            }
+        });
+
+        // select2
+        $(".multiselect").select2();
     });
 
 </script>
