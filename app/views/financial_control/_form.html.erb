@@ -33,12 +33,7 @@
       <%= ed.label :amount, class: "control-label" %>
       <%= ed.text_field :amount, class: "form-control" %>
     </div>
-    <div class="form-group">
-        <div class="input-group">
-          <%= ed.check_box :paid, class: "iCheck", data: {skin: "line", color: "blue"} %>
-          <%= ed.label :paid, class: "control-label" %>
-        </div><!-- /input-group -->
-    </div>
+
     <div class="form-group">
         <%= f.label :entry_date, class: "control-label" %>
         <div class='input-group date' id='datetimepicker-entry'>
@@ -49,39 +44,27 @@
           </span>
         </div>
     </div>
-    <!--<div class="col-sm-2">-->
-        <!--<div class="form-group">-->
-          <!--<%= ed.label :day, class: "control-label" %>-->
-          <!--<%= ed.collection_select :month, 1..31, :to_s, :to_s, {selected: Date.today.strftime("%m")}, {class: "form-control"} %>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col-sm-6">-->
-        <!--<div class="form-group">-->
-          <!--<%= ed.label :month, class: "control-label" %>-->
-          <!--<%= ed.collection_select :month, months, :first, :last, {selected: Date.today.strftime("%m")}, {class: "form-control"} %>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col-sm-4">-->
-        <!--<div class="form-group">-->
-          <!--<%= ed.label :year, class: "control-label" %>-->
-          <!--<%= ed.number_field :year, class: "form-control" %>-->
-        <!--</div>-->
-    <!--</div>-->
+
+    <div class="form-group">
+        <%= f.label :category, class: "control-label" %>
+        <button type="button" class="btn btn-icon" data-toggle="modal" data-target=".modal-add-category"><i class="icon ion-plus-circled"></i></button>
+        <%= f.collection_select :category_id, Category.order(:name), :id, :name, {prompt: "Sem Categoria"}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :tags, class: "control-label" %>
+      <button type="button" class="btn btn-icon" data-toggle="modal" data-target=".modal-add-tag"><i class="icon ion-plus-circled"></i></button>
+        <%= f.collection_select :tag_ids, Tag.order(:name), :id, :name, {}, {multiple: true, class: "multiselect", placeholder: "Nenhuma"} %>
+    </div>
+
+
+    <div class="form-group">
+        <div class="input-group">
+          <%= ed.check_box :paid, class: "iCheck", data: {skin: "line", color: "blue"} %>
+          <%= ed.label :paid, class: "control-label" %>
+        </div><!-- /input-group -->
+    </div>
   <% end %>
-
-  <div class="form-group">
-    <%= f.label :category, class: "control-label" %>
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name, {prompt: "Sem Categoria"}, {class: "form-control"} %>
-  </div>
-
-  <%= render 'form_category' %>
-
-  <div class="form-group">
-    <%= f.label :tags, class: "control-label" %>
-    <%= f.collection_select :tag_ids, Tag.order(:name), :id, :name, {}, {multiple: true, class: "multiselect", placeholder: "Nenhuma"} %>
-  </div>
-
-  <%= render 'form_category' %>
 
   <div class="form-group">
     <%= f.label :description, class: "control-label" %>
@@ -92,6 +75,7 @@
     <%= f.submit "Salvar", class: "btn btn-primary" %>
   </div>
 <% end %>
+
 </div>
 
 <script type="text/javascript">

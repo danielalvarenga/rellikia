@@ -1,10 +1,20 @@
-<%= form_for Category.new, class: "form-horizontal", role: "form" do |fc| %>
-    <div class="form-group">
-      <div class="input-group">
-        <%= fc.text_field :name, class: "form-control", placeholder: "Nova Categoria" %>
-        <span class="input-group-btn">
-            <%= fc.submit "Adicionar", class: "btn btn-success" %>
-        </span>
+<div class="modal fade modal-add-category" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <div class="panel-body">
+        <%= form_for Category.new, class: "form-horizontal", role: "form" do |f| %>
+          <div class="form-group">
+            <%= f.label "Nova Categoria", class: "control-label" %>
+            <div class="input-group">
+              <%= f.text_field :name, class: "form-control", placeholder: "Nome" %>
+              <span class="input-group-btn">
+                <%= f.submit "Adicionar", class: "btn btn-success" %>
+              </span>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-<% end %>
+  </div>
+</div>
