@@ -75,10 +75,15 @@
     <%= f.submit "Salvar", class: "btn btn-primary" %>
   </div>
 <% end %>
-
 </div>
 
-<script type="text/javascript">
+<% content_for :head do %>
+    <%= javascript_include_tag 'jquery-icheck/jquery.icheck.min' %>
+    <%= javascript_include_tag 'bootstrap3-datetimepicker/js/bootstrap-datetimepicker.min' %>
+    <%= javascript_include_tag 'select2/select2.min' %>
+<% end %>
+
+<% content_for :js do %>
 
     $(function() {
         'use strict';
@@ -165,4 +170,4 @@
         $(".multiselect").select2();
     });
 
-</script>
+<% end %>

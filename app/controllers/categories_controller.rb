@@ -30,9 +30,11 @@ class CategoriesController < ApplicationController
       if @category.save
         format.html { redirect_to financial_control_index_url, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
+        format.js {render partial: 'show_category', status: :created, location: @category  }
       else
         format.html { render redirect_to financial_control_index_url }
         format.json { render json: @category.errors, status: :unprocessable_entity }
+        format.js {render partial: 'show_category', status: :unprocessable_entity }
       end
     end
   end
