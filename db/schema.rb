@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20141116160233) do
   end
 
   create_table "entry_details", force: true do |t|
-    t.decimal  "amount",      precision: 10, scale: 0
-    t.decimal  "amount_paid", precision: 10, scale: 0
+    t.decimal  "amount",      precision: 10, scale: 2
+    t.decimal  "amount_paid", precision: 10, scale: 2
     t.integer  "day"
     t.integer  "month"
     t.integer  "year"

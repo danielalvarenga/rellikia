@@ -26,7 +26,8 @@ class EntriesController < ApplicationController
   # POST /entries
   # POST /entries.json
   def create
-    @entry = Entry.new(entry_params)
+    params = mount_date
+    @entry = Entry.new(params)
 
     respond_to do |format|
       if @entry.save
@@ -61,6 +62,14 @@ class EntriesController < ApplicationController
       format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def mount_date
+    params = entry_params
+    entry_detail = params["entry_details_attributes"]["0"]
+    entry_detail["entry_date"] = Date.strptime(entry_detail["entry_date"], "%d/%m/%Y")
+    params["entry_details_attributes"]["0"] = entry_detail
+    params
   end
 
   private

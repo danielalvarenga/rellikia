@@ -1,0 +1,5 @@
+$('select#entry_tag_ids').append("<option value='<%= @tag.id %>'><%= @tag.name %></option>");
+$('select#entry_tag_ids').click(function(){
+    "<option value='<%= @tag.id %>'><%= @tag.name %></option>"
+});
+$('#new_tag_modal').modal_success();

@@ -3,8 +3,8 @@
 # Table name: entry_details
 #
 #  id          :integer          not null, primary key
-#  amount      :integer
-#  amount_paid :integer
+#  amount      :decimal(10, 2)
+#  amount_paid :decimal(10, 2)
 #  day         :integer
 #  month       :integer
 #  year        :integer

@@ -30,9 +30,11 @@ class TagsController < ApplicationController
       if @tag.save
         format.html { redirect_to financial_control_index_url, notice: 'Tag was successfully created.' }
         format.json { render :show, status: :created, location: @tag }
+        format.js { render action: 'option_tag', status: :created, location: @tag  }
       else
         format.html { redirect_to financial_control_index_url }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
+        format.js { render json: @tag.errors, status: :unprocessable_entity }
       end
     end
   end

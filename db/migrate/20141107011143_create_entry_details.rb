@@ -1,8 +1,8 @@
 class CreateEntryDetails < ActiveRecord::Migration
   def change
     create_table :entry_details do |t|
-      t.decimal :amount
-      t.decimal :amount_paid
+      t.decimal :amount, precision: 10, scale: 2
+      t.decimal :amount_paid, precision: 10, scale: 2
       t.integer :day
       t.integer :month
       t.integer :year
