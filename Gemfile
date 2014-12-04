@@ -51,3 +51,10 @@ group :development do
   gem 'annotate', '~> 2.6.5'
   gem 'pry-rails'
 end
+
+# Heroku
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'thin'
+end
