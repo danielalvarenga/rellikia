@@ -29,9 +29,16 @@ class EntryDetail < ActiveRecord::Base
   before_create :split_entry_date
 
   scope :revenues, -> { where('`entries`.`positive` = 1') }
+
   scope :expenses, -> { where('`entries`.`positive` = 0') }
-  scope :include_all, -> { joins(entry: [:category, :tags]).group("`entries`.`id`") }
-  scope :in_category, -> (category) { where("`categories`.`id` = #{category.id}") }
+
+  scope :include_all, -> { joins(:entry => :category).
+                            joins("LEFT JOIN `entries_tags` ON `entries_tags`.`entry_id` = `entries`.`id`").
+                            joins("LEFT JOIN `tags` ON `tags`.`id` = `entries_tags`.`tag_id`").
+                            group("`entries`.`id`") }
+
+  scope :in_category, -> (category) { where("`categories`.`id` = #{category.id}")}
+
   scope :in_month, -> (month_number) { where("`entry_details`.`month` = #{month_number}") }
 
   def split_entry_date

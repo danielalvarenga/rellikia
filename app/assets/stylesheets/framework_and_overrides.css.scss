@@ -116,3 +116,19 @@ ul.dropdown-menu.year-box {
   margin-left: 0px;
   padding-left: 0px;
 }
+
+div[class*="icheckbox_"], div[class*="iradio_"] {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.label-right {
+  div[class*="icheckbox_"], div[class*="iradio_"] {
+    display: inline-block;
+    margin-right: 2px;
+  }
+}
+
+.positive_option_1 {
+  margin-right: 15px;
+}
