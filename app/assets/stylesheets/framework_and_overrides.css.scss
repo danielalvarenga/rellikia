@@ -98,3 +98,37 @@ ul.dropdown-menu.year-box {
     diplay: inline;
   }
 }
+
+.box.right-sidebar {
+  margin-bottom: 0;
+}
+
+.multiselect {
+  width: 100%;
+}
+
+.push-right {
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+.push-left {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+div[class*="icheckbox_"], div[class*="iradio_"] {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.label-right {
+  div[class*="icheckbox_"], div[class*="iradio_"] {
+    display: inline-block;
+    margin-right: 2px;
+  }
+}
+
+.positive_option_1 {
+  margin-right: 15px;
+}

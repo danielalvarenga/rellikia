@@ -1,4 +1,5 @@
 class FinancialControlController < ApplicationController
+
   def index
     @entry_details = EntryDetail.include_all.
         where(year: Date.today.year).
@@ -11,5 +12,8 @@ class FinancialControlController < ApplicationController
         where('`entry_details`.`year`', Date.today.year).
         group('`categories`.`id`').
         order('`categories`.`name` ASC')
+
+    @entry = Entry.new
+    @entry.entry_details.build
   end
 end

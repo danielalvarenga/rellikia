@@ -3,8 +3,8 @@
 # Table name: entry_details
 #
 #  id          :integer          not null, primary key
-#  amount      :integer
-#  amount_paid :integer
+#  amount      :decimal(10, 2)
+#  amount_paid :decimal(10, 2)
 #  day         :integer
 #  month       :integer
 #  year        :integer
@@ -15,6 +15,8 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  paid        :boolean
+#  entry_date  :date
+#  paid_date   :date
 #
 # Indexes
 #
@@ -24,9 +26,24 @@
 class EntryDetail < ActiveRecord::Base
   belongs_to :entry
 
+  before_create :split_entry_date
+
   scope :revenues, -> { where('`entries`.`positive` = 1') }
+
   scope :expenses, -> { where('`entries`.`positive` = 0') }
-  scope :include_all, -> { joins(entry: [:category, :tags]).group("`entries`.`id`") }
-  scope :in_category, -> (category) { where("`categories`.`id` = #{category.id}") }
+
+  scope :include_all, -> { joins(:entry => :category).
+                            joins("LEFT JOIN `entries_tags` ON `entries_tags`.`entry_id` = `entries`.`id`").
+                            joins("LEFT JOIN `tags` ON `tags`.`id` = `entries_tags`.`tag_id`").
+                            group("`entries`.`id`") }
+
+  scope :in_category, -> (category) { where("`categories`.`id` = #{category.id}")}
+
   scope :in_month, -> (month_number) { where("`entry_details`.`month` = #{month_number}") }
+
+  def split_entry_date
+    self.day = self.entry_date.strftime('%d')
+    self.month = self.entry_date.strftime('%m')
+    self.year = self.entry_date.strftime('%Y')
+  end
 end

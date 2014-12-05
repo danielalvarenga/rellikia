@@ -49,6 +49,10 @@ test:
 #
 production:
   <<: *default
-  database: rellikia
-  username: rellikia
-  password: <%= ENV['RELLIKIA_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: utf8
+  database: dft0rvkdvmvssd
+  pool: 5432
+  username: gzfnfdkzdvplio
+  password: nL3fKcbJ3DCzGIx3YD9lA5TDnH
+  host: ec2-54-221-249-3.compute-1.amazonaws.com

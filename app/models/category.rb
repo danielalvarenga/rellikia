@@ -11,6 +11,8 @@
 class Category < ActiveRecord::Base
   has_many :entries
 
+  validates :name, presence: true
+
   scope :ascend_name, -> { order('`categories`.`name` ASC') }
   scope :with_entries, -> { joins(entries: [:entry_details]).group('`categories`.`id`') }
   scope :revenues, -> { where('`entries`.`positive` = 1') }

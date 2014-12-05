@@ -1,6 +1,6 @@
                         <!-- app header -->
                         <div class="app-header">
-                          <div class="pull-right">
+                          <div class="pull-left">
                             <div class="btn-group">
                               <button type="button" class="btn btn-default dropdown-toggle btn-extend be-left" data-toggle="dropdown">
                                 2014 <span class="caret"></span>
@@ -11,18 +11,18 @@
                                 <li><a href="#">2016</a></li>
                               </ul>
                             </div>
-                            <div class="btn-group">
-                                <!-- (recomended: dont change the id value) -->
-                                <a id="toggle-aside" role="button"><%= fa_icon "gear lg", class: 'btn icon' %></a>
-                            </div>
                           </div>
-                          <div class="pull-left">
-                            <a href="#" class="btn btn-success btn-extend be-left credit op-currency">
+                          <div class="pull-right">
+                            <!--<div class="btn-group">-->
+                              <!--&lt;!&ndash; (recomended: dont change the id value) &ndash;&gt;-->
+                              <!--<a id="toggle-aside" role="button"><%= fa_icon "gear lg", class: 'btn icon' %></a>-->
+                            <!--</div>-->
+                            <a id="toggle-revenue" href="#" class="btn btn-success btn-extend be-left credit op-currency">
                               <span class="op-currency">
                                 <%= fa_icon "plus", text: fa_icon("usd 1.5x") %>
                               </span>Receita
                             </a>
-                            <a href="#" class="btn btn-danger btn-extend be-left debit op-currency">
+                            <a id="toggle-expense" href="#" class="btn btn-danger btn-extend be-left debit op-currency">
                                 <span class="op-currency">
                                   <%= fa_icon "minus", text: fa_icon("usd") %>
                                 </span>Despesa

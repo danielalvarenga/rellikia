@@ -1,0 +1,171 @@
+<div class="box right-sidebar">
+<%= form_for @entry, class: "form-horizontal", role: "form" do |f| %>
+  <% if @entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% @entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="input-group label-right">
+        <%= f.radio_button :positive, "1", class: "iCheck positive_option_1", data: {skin: "square", color: "green"} %>
+        <%= f.label :positive, "Receita", class: "positive_option_1" %>
+        <%= f.radio_button :positive, "0", class: "iCheck", data: {skin: "square", color: "red"} %>
+        <%= f.label :positive, "Despesa" %>
+    </div><!-- /input-group -->
+  </div><!-- /form-group -->
+
+  <div class="form-group">
+    <%= f.label "Nome", class: "control-label" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <%= f.fields_for :entry_details do |ed| %>
+    <div class="form-group">
+      <%= ed.label "Valor", class: "control-label" %>
+      <%= ed.text_field :amount, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= ed.label "Data de Pagamento", class: "control-label" %>
+        <div class='input-group date' id='datetimepicker-entry'>
+          <%= ed.text_field :entry_date, value: Date.today.strftime("%d/%m/%Y"),
+                             class: "form-control", data: {format: "DD/MM/YYYY"} %>
+          <span class="input-group-addon">
+            <span class="icon ion-ios7-calendar-outline"></span>
+          </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <%= f.label "Categoria", class: "control-label" %>
+        <button type="button" class="btn btn-icon" data-toggle="modal" data-target="#new_category_modal"><i class="icon ion-plus-circled"></i></button>
+        <%= f.collection_select :category_id, Category.order(:name), :id, :name, {selected: "Sem Categoria"}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label "Tags", class: "control-label" %>
+        <button type="button" class="btn btn-icon" data-toggle="modal" data-target="#new_tag_modal"><i class="icon ion-plus-circled"></i></button>
+        <%= f.collection_select :tag_ids, Tag.order(:name), :id, :name, {}, {multiple: true, class: "multiselect", placeholder: "Nenhuma"} %>
+    </div>
+
+
+    <div class="form-group">
+        <div class="input-group label-right">
+          <%= ed.check_box :paid, class: "iCheck", data: {skin: "flat", color: "blue"} %>
+          <%= ed.label "Lançamento Pago", class: "control-label" %>
+        </div><!-- /input-group -->
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label "Descrição", class: "control-label" %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
+
+<% content_for :head do %>
+    <%= javascript_include_tag 'jquery-icheck/jquery.icheck.min' %>
+    <%= javascript_include_tag 'bootstrap3-datetimepicker/js/bootstrap-datetimepicker.min' %>
+    <%= javascript_include_tag 'select2/select2.min' %>
+<% end %>
+
+<% content_for :js do %>
+
+    $(function() {
+        'use strict';
+
+        // checkbox and radio with iCheck
+        // Initialize all components iCheck
+        $('.iCheck').each(function(){
+            // var each element .iCheckselect-tags
+            var $this = $(this),
+                    skin = $this.attr('data-skin'),
+                    color = $this.attr('data-color'),
+                    checkbox, radio, insert = '';
+
+            /**
+             * default usage skin
+             *
+             * Skins options:
+             * @data-skin minimalis
+             * @data-skin square
+             * @data-skin flat
+             * @data-skin line
+             * @data-skin polaris
+             * @data-skin futurico
+             */
+            if (skin === undefined) {
+                checkbox = 'icheckbox_minimal';
+                radio = 'iradio_minimal';
+            }
+            else{
+                checkbox = 'icheckbox_' + skin;
+                radio = 'iradio_' + skin;
+            }
+
+            /**
+             * default usage color
+             *
+             * Available colors:
+             * @data-color black
+             * @data-color red
+             * @data-color green
+             * @data-color blue
+             * @data-color aero
+             * @data-color grey
+             * @data-color orange
+             * @data-color yellow
+             * @data-color pink
+             * @data-color purple
+             */
+            if (color !== undefined) {
+                checkbox = checkbox + '-' + color;
+                radio = radio + '-' + color;
+            }
+
+            // handle iCheck skin 'line'
+            if (skin == 'line') {
+                var label = $this.next(),
+                        label_text = label.text();
+
+                insert = '<div class="icheck_line-icon"></div>' + label_text;
+                label.remove();
+            }
+
+            // initialize
+            $this.iCheck({
+                checkboxClass: checkbox,
+                radioClass: radio,
+                insert: insert,
+                increaseArea: '20%' // optional
+            });
+        });
+        // end iCheck
+
+        // bootstrap3-datetimepicker
+        $('#datetimepicker-entry').datetimepicker({
+            icons : {
+                time: 'icon ion-ios7-clock-outline',
+                date: 'icon ion-ios7-calendar-outline',
+                up:   'icon ion-ios7-arrow-up',
+                down: 'icon ion-ios7-arrow-down'
+            }
+        });
+
+        // select2
+        $(".multiselect").select2();
+    });
+
+<% end %>

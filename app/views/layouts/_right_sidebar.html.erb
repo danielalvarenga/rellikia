@@ -7,23 +7,19 @@
                         <div class="module-header">
                             <h3 class="module-title">
                                 <i class="icon ion-ios7-chatboxes-outline"></i> Lançamento
+                              <div class="pull-right">
+                                <div class="btn-group">
+                                  <!-- (recomended: dont change the id value) -->
+                                  <a id="toggle-close" role="button"><%= fa_icon "close ", class: 'btn icon' %></a>
+                                </div>
+                              </div>
                             </h3>
                         </div><!-- /module header -->
 
                         <!-- module body -->
                         <div class="module-body">
                             
-                            <!-- app module here -->
-                          <form class="form-horizontal" role="form">
-                            <fieldset>
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input">Text Input</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="input" placeholder="Username" >
-                                </div>
-                              </div><!-- /form-group -->
-                            </fieldset><!-- /fieldset -->
-                          </form><!-- /form -->
+                          <%= render 'financial_control/form', locals: {entry: @entry} %>
                             
                         </div><!-- /module content -->
                     </div><!-- /content module -->
