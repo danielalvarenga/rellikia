@@ -51,8 +51,8 @@ production:
   <<: *default
   adapter: postgresql
   encoding: utf8
-  database: d3823j27nbdd3i
+  database: dft0rvkdvmvssd
   pool: 5432
-  username: zmlqfikfpwpmeh
-  password: _IRsWkoOwLiJHWED5oQW-F85th
-  host: ec2-107-20-245-187.compute-1.amazonaws.com
+  username: gzfnfdkzdvplio
+  password: nL3fKcbJ3DCzGIx3YD9lA5TDnH
+  host: ec2-54-221-249-3.compute-1.amazonaws.com

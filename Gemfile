@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby '2.1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use mysql as the database for Active Record
@@ -53,8 +53,8 @@ group :development do
 end
 
 # Heroku
+gem 'pg'
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
   gem 'thin'
 end
