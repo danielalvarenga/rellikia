@@ -13,10 +13,10 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true
 
-  scope :ascend_name, -> { order('`categories`.`name` ASC') }
-  scope :with_entries, -> { joins(entries: [:entry_details]).group('`categories`.`id`') }
-  scope :revenues, -> { where('`entries`.`positive` = 1') }
-  scope :expenses, -> { where('`entries`.`positive` = 0') }
-  scope :in_month, -> (month_number) { where("`entry_details`.`month` = #{month_number}") }
+  scope :ascend_name, -> { order('categories.name ASC') }
+  scope :with_entries, -> { joins(entries: [:entry_details]).group('categories.id') }
+  scope :revenues, -> { where('entries.positive is true') }
+  scope :expenses, -> { where('entries.positive is false') }
+  scope :in_month, -> (month_number) { where("entry_details.month = #{month_number}") }
 
 end
