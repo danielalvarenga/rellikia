@@ -19,4 +19,4 @@
 /.idea
 
 # Theme
-/vendor/assets/theme
+# /vendor/assets/theme
